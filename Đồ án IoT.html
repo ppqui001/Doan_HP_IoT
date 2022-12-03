@@ -6,113 +6,90 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Cài đặt trị số</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='nut_nhan.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
 </head>
 
 <body>
-
-    <h1 style="background-color: cyan;">CÀI ĐẶT THÔNG SỐ</h1>
-    <div class="moi_truong" style="width: 500px;
-    margin-top: 30px;
-    background-color:#003b46;
-    padding:10px 10px 0 10px;
-    border-radius: 8px;">
-        <h2>CHỈ SỐ MÔI TRƯỜNG</h2>
-        <form>
-            <label>Nồng độ pH<br>
-                <input type="input" id="pH_min" required> - <input type="input" id="pH_max" required>
-            </label><br>
-            <label>Nhiệt độ nước<br>
-                <input type="input" id="Temp_min" required> - <input type="input" id="Temp_max" required>
-            </label><br>
-            <label>Mức nước<br>
-                <input type="input" id="LW_min" required> - <input type="input" id="LW_max" required>
-            </label><br>
-        </form>
-        <br>
+    <!-- Bố cục đầu -->
+    <div id="L_Header">
+        <h1>CÀI ĐẶT THÔNG SỐ</h1>
+        <input type="button" >
     </div>
-
-    <div class="dieu_khien" style="width: 500px;
-    margin-top: 30px;
-    background-color: #07575b;
-    padding:10px 10px 0 10px;
-    border-radius: 8px;">
-        <h2>THÔNG SỐ ĐIỀU KHIỂN</h2>
-        <form>
-            <h3>QUẠT ĐẬP NƯỚC</h3>
-            <label>Chế độ điều khiển</label>
-            <select id="drop1" onclick="get_selection()">
-                <option>Tự động theo thời gian trong ngày</option>
-                <option>Tự động theo chu kỳ</option>
-                <option>Thủ công</option>
-            </select>
-            </ul>
-        </form>
-        <br>
+    <!-- Bố cục trái -->
+    <div id="L_Left">
+        <div id="Chiso_moitruong" class="Layout">
+            <h2>CHỈ SỐ MÔI TRƯỜNG</h2>
+            <form>
+                <label>Nồng độ pH<br>
+                    <input type="input" id="pH_min" required> - <input type="input" id="pH_max" required>
+                </label><br>
+                <label>Nhiệt độ nước<br>
+                    <input type="input" id="Temp_min" required> - <input type="input" id="Temp_max" required>
+                </label><br>
+                <label>Mức nước<br>
+                    <input type="input" id="LW_min" required> - <input type="input" id="LW_max" required>
+                </label><br>
+            </form>
+            <br>
+        </div>
     </div>
-      <div class="Nhập điều chỉnh " style="width: 580px;
-    margin-top: 30px;
-    background-color: #66a5ad;
-    padding:10px 10px 5 10px;
-    border-radius: 8px;">
-        <h3>Tự động theo thời gian trong ngày </h3> <br>
-                     
-        <span>Tại thời điểm</span>
-             
-        <input type="text" name="" required=""> <span>Thời gian hoạt động</span> <input type="text" name="" required=""> <br>
-        <br>
-
-        <span>Tại thời điểm</span>
-             
-        <input type="text" name="" required=""> <span>Thời gian hoạt động</span> <input type="text" name="" required=""> <br>
-        <br>              
-        <span>Tại thời điểm</span>
-             
-        <input type="text" name="" required=""> <span>Thời gian hoạt động</span> <input type="text" name="" required=""> <br>
-        <br>              
-        <span>Tại thời điểm</span>
-             
-        <input type="text" name="" required=""> <span>Thời gian hoạt động</span> <input type="text" name="" required=""> <br>
-        <br>
-    </div>
-    <div class="Tự động theo chu kỳ " style="width: 600px;
-    margin-top: 30px;
-    background-color: #66a5ad;
-    padding:10px 10px 5 10px;
-    border-radius: 8px;">
-        <h4>Tự động theo chu kỳ </h4> <br>
-                     
-        <span>Thời điểm chu kỳ </span>
-             
-        <input type="text" name="" required=""> <span>Hoạt động chu kỳ </span> <input type="text" name="" required=""> <br>
-        <br>
-    </div>
-    <div class="Thủ công  " style="width: 350px;
-    margin-top: 30px;
-    background-color: #66a5ad;
-    padding:10px 10px 5 10px;
-    border-radius: 8px;">
+    <!-- Bố cục phải -->
+    <div id="L_Right">
+        <div id="Thongso_dieukhien" class="Layout">
+            <h2>THÔNG SỐ ĐIỀU KHIỂN</h2>
+            <form>
+                <h3>QUẠT ĐẬP NƯỚC</h3>
+                <label>Chế độ điều khiển</label>
+                <select id="drop1" onclick="get_selection()">
+                    <option>Tự động theo thời gian trong ngày</option>
+                    <option>Tự động theo chu kỳ</option>
+                    <option>Thủ công</option>
+                </select>
+                </ul>
+            </form>
+            <br>
     
-
-<h4> Thủ công </h4> 
+            <div id="DK_Chedo_1">
+                <h3>Tự động theo thời gian trong ngày </h3> <br>
+                             
+                <label>Tại thời điểm</label>
                      
-        <table>
-
-  <tr>
-    <td><a class="button1 href="//"><span class="btn1"> ON </span></a></td>
-    <td><a class="button1" href="//"><span class="btn1">OFF</span></a></td>
-  
-  </tr>
-</table>
-             
-</div>
-
-
-
+                <input type="text" name="" required=""> <label>Thời gian hoạt động</label> <input type="text" name="" required=""> <br>
+                <br>
         
-                         
-        
+                <label>Tại thời điểm</label>
+                     
+                <input type="text" name="" required=""> <label>Thời gian hoạt động</label> <input type="text" name="" required=""> <br>
+                <br>              
+                <label>Tại thời điểm</label>
+                     
+                <input type="text" name="" required=""> <label>Thời gian hoạt động</label> <input type="text" name="" required=""> <br>
+                <br>              
+                <label>Tại thời điểm</label>
+                     
+                <input type="text" name="" required=""> <label>Thời gian hoạt động</label> <input type="text" name="" required=""> <br>
+                <br>
+            </div>
+    
+            <div id="DK_Chedo_2">
+                <h3>Tự động theo chu kỳ</h3> <br>
+                             
+                <label>Thời điểm chu kỳ </label>
+                     
+                <input type="text" name="" required=""> <label>Hoạt động chu kỳ </label> <input type="text" name="" required=""> <br>
+                <br>
+            </div>
+
+            <div id="DK_Chedo_3">
+                <h3>ĐIỀU KHIỂN THỦ CÔNG</h3> <br>
+                <label>Máy bơm</label>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+    </div>
 </body>
-
 </html>
