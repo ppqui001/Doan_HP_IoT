@@ -1,5 +1,10 @@
 /* Tạo bố cục giao diện */
 #L_Header{
+    text-align: center;
+}
+#L_C{
+    width: 98%;
+    
 
 }
 #L_Left{
@@ -20,10 +25,10 @@ body {
 }
 
 h1 {
-    /* background-color: cyan; */
-    color: #003B46;
+    background-color: #07575B;
+    color: #C4DFE6;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 40px;
 }
 
 h2 {
@@ -58,6 +63,14 @@ label{
 
 input {
     background-color: #C4DFE6;
+}
+
+table {
+    width: 100%;
+}
+
+table tr th{
+    width: 33%;
 }
 
 
