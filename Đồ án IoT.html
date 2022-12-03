@@ -17,6 +17,7 @@
             CÀI ĐẶT THÔNG SỐ
             <br><br>
         </h1>
+        <span id="item"></span>
     </div>
 
     <div id="L_C">
@@ -41,11 +42,12 @@
                 <br>
             </div>
         </div>
-        
+
         <!-- Bố cục phải -->
         <div id="L_Right">
             <div id="Tool_dieukhien">
-                <input type="button" id="bt_kq" onchange="" value="KẾT QUẢ">
+                <input type="button" class="BT" id="Bt_Save" onchange="" value="SAVE">
+                <input type="button" class="BT" id="Bt_Reset" onchange="" value="RESET DEFAULT">
             </div>
 
             <div id="Thongso_dieukhien" class="Layout">
@@ -53,10 +55,10 @@
                 <form>
                     <h3>QUẠT ĐẬP NƯỚC</h3>
                     <label>Chế độ điều khiển</label>
-                    <select id="Mode_control" onclick="Mode_controller()">
-                        <option>Tự động theo thời gian trong ngày</option>
-                        <option>Tự động theo chu kỳ</option>
-                        <option>Thủ công</option>
+                    <select id="Mode_Ctrl" onclick="Mode_controller()">
+                        <option value="1">Chế độ 1: Tự động theo thời gian trong ngày</option>
+                        <option value="2">Chế độ 2: Tự động theo chu kỳ</option>
+                        <option value="3">Chế độ 3: Thủ công</option>
                     </select>
                     </ul>
                 </form>
@@ -93,7 +95,8 @@
 
                     <label>Thời điểm chu kỳ </label>
 
-                    <input type="text" id="Tperiod" placeholder="mm" required=""> <label>Hoạt động chu kỳ </label> <input type="text" id="Tperiod_t" placeholder="mm" required=""> <br>
+                    <input type="text" id="Tperiod" placeholder="mm" required=""> <label>Hoạt động chu kỳ </label>
+                    <input type="text" id="Tperiod_t" placeholder="mm" required=""> <br>
                     <br>
                 </div>
 
