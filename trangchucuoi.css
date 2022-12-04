@@ -1,0 +1,156 @@
+a {
+  color: #330000;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #CC0000;
+}
+
+.about .title {
+  text-align: center;
+  margin: 3%;
+  font-size: 20px;
+  color: black;
+  margin-bottom: -10px;
+}
+
+.about .text {
+  width: 90%;
+  font-size: 20px;
+  line-height: 1.2;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: left;
+  margin: 0 auto;
+}
+
+.table-container:last-child {
+  margin-bottom: 5px;
+}
+
+.content {
+  background-image: url("xanh.gif");
+  background-repeat: repeat;
+}
+
+.about .title {
+  text-transform: uppercase;
+  font-size: 25px;
+}
+
+.about .text {
+  background-image: url("bc.gif");
+  border-bvvus: 25px;
+}
+
+.table-container {
+  flex: 50;
+}
+
+.circuit-container {
+  width: 50%;
+}
+
+.footer-container {
+  background-color: #C4DFE6;
+  width: 100vw;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.footer-container p {
+  flex: 10;
+  text-align: center;
+}
+
+.footer-avt {
+  align-items: center;
+}
+
+.footer-avt img,
+.teacher-avt img {
+  margin-right: 70px;
+  width: 35px;
+  border-radius: 10px;
+}
+
+.teacher-avt img {
+  margin-left: 8px;
+}
+
+body {}
+
+#wrapper {
+  margin: 50px;
+  padding: 0px;
+  width: 100%;
+  margin-top: 0px;
+}
+
+#header {
+  background-color: #C4DFE6;
+  border-radius: 10px;
+  height: 100px;
+  margin-bottom: 65px;
+}
+
+#header p {
+  color: black;
+  font-family: Arial;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 27px;
+
+}
+
+.box {
+  float: left;
+  width: 140;
+  height: 100px;
+  border-radius: 8px;
+  background-color: #C4DFE6
+}
+
+.content {
+  display: flex;
+  align-items: center;
+}
+
+ul {
+  list-style-type: none;
+  margin: 2;
+  padding: 20;
+  overflow: hidden;
+  background-color: #C4DFE6;
+  font-family: "Arial";
+  border-radius: 10px;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 15px 30px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: white;
+  border-radius: 100px;
+}
+p {
+  display: block;
+  margin-block-start: 0;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
