@@ -54,4 +54,3 @@ function Mode_controller() {
         console.log(MOther);
     }
 }
-
