@@ -8,6 +8,58 @@
     <meta id='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
+        import { getDatabase, ref, set, child, get } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA18yH_4l7o0rEiNJe1Ybk0wlG9A1H15fU",
+            authDomain: "doaniot-39e9c.firebaseapp.com",
+            databaseURL: "https://doaniot-39e9c-default-rtdb.firebaseio.com",
+            projectId: "doaniot-39e9c",
+            storageBucket: "doaniot-39e9c.appspot.com",
+            messagingSenderId: "977342964680",
+            appId: "1:977342964680:web:518da215ac262fa7b896fd"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        send.addEventListener('click', (e) => {
+            Sends();
+        });
+        read.addEventListener('click', (e) => {
+            Getval();
+        });
+
+        function Sends() {
+            Number = parseFloat(document.getElementById('Number').value);
+            const db = getDatabase();
+            set(ref(db, 'Number/'), {
+                Value: Number
+            });
+        }
+
+        function Getval() {
+            const dbRef = ref(getDatabase());
+            get(child(dbRef, `Number` + '/Value')).then((snapshot) => {
+                if (snapshot.exists()) {
+                    console.log(snapshot.val());
+                    document.getElementById('val').innerHTML = "Number/Value=" + snapshot.val();
+                } else {
+                    console.log("No data available");
+                }
+            }).catch((error) => {
+                console.error(error);
+            });
+        }
+    </script>
 </head>
 
 <body>
@@ -45,6 +97,15 @@
 
         <!-- Bố cục phải -->
         <div id="L_Right">
+
+            <input type="number" id="Number" placeholder="Type number">
+            <input type="button" value="Write" id="send">
+
+            <!-- Hiển thị giá trị đọc được -->
+            <br>
+            <br>
+            <input type="button" value="Read" id="read">
+            <p id="val"> </p>
             <!-- <div id="Tool_dieukhien" >
                 <input type="button" class="BT" id="Bt_Save" onchange="" value="SAVE">
                 <input type="button" class="BT" id="Bt_Reset" onchange="" value="RESET DEFAULT">
