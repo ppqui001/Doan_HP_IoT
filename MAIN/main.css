@@ -1,0 +1,245 @@
+/* Tạo bố cục giao diện */
+#L_Header{
+    text-align: center;
+}
+#L_C{
+    width: 98%;
+    
+
+}
+#L_Left{
+    float: left;
+    width: 30%;
+}
+
+#L_Right{
+    float: right;
+    width: 65%;
+}
+
+
+/* Style the body */
+body {
+    background-color: #C4DFE6;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    background-color: #07575B;
+    color: #C4DFE6;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+h2 {
+    text-align: center;
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    font-weight: bold;
+    font-size: 30px;
+    color: #C4DFE6;
+}
+
+h3 {
+    text-align: center;
+    display: block;
+    color: #C4DFE6;
+}
+
+label{
+    color: #C4DFE6;
+}
+
+.Layout {
+    
+    width: 100%;
+    margin-top: 30px;
+    background-color: #07575B;
+    padding: 10px 10px 0 10px;
+    border-radius: 10px;
+}
+
+input {
+    background-color: #C4DFE6;
+}
+
+table {
+    width: 100%;
+}
+
+table tr th{
+    width: 33%;
+}
+
+
+/* 
+#003B46
+#07575B
+#66A5AD
+#C4DFE6
+*/
+
+
+/* Style the header */
+header {
+    background-color: white;
+    padding: 1px;
+    text-align: center;
+    font-size: 30px;
+    color: black;
+    height: 20%;
+}
+
+/* Style 30% layout left */
+thongsovachart {
+    float: right;
+    padding: 20px;
+    background-color: #07575b;
+    width: 70%;
+    height: 100%;
+}
+
+/* Style 70% layout right */
+canhbaovathietbi {
+    float: left;
+    padding: 20px;
+    background-color: #07575b;
+    width: 30%;
+    height: 100%;
+}
+
+Thongso {
+    float: left;
+    text-align: center;
+    border: 12px solid #66a5ad;
+    border-radius: 25px;
+    color: white;
+    background-color: #07575B;
+    width: 100%;
+    height: 180px;
+}
+
+/* Create two columns/boxes that floats next to each other */
+chart {
+    margin-top: 20px;
+    border-radius: 20px;
+    float: left;
+    background: #C4DFE6;
+    padding: 20px;
+    width: 100%;
+    height: 280px;
+}
+
+/* Style the list inside the menu */
+chart ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+Canhbao {
+    float: left;
+    border-radius: 20px;
+    background-color: #66a5ad;
+    padding: 0px;
+    text-align: center;
+    color: white;
+    width: 100%;
+    height: 300px;
+}
+
+Motor {
+    float: left;
+    text-align: center;
+    line-height: 13px;
+    /*Khoảng cách các dòng*/
+    border-radius: 20px;
+    /* bo góc cả khung */
+    border: 3px solid whitesmoke;
+    background-color: #66a5ad;
+    width: 100%;
+    height: 150px;
+    margin-top: 20px;
+    color: white;
+}
+
+setting {
+    margin-left: 3%;
+    /*cách lề trái*/
+    float: left;
+    text-align: center;
+    border-radius: 25px;
+    color: white;
+    background-color: #07575B;
+    width: 100%;
+    height: 80px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: -7px;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #003b46;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #003B46;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 40px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+#time_update {
+    line-height: 5px;
+}
+
+#time_settings {
+    margin-top: 5px;
+}

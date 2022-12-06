@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Cài đặt trị số</title>
+    <meta id='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <!-- <script src="Firebase.js"></script> -->
+    <!-- <script type="module">
+        // Import the functions you need from the SDKs you need
+        // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
+        import { getDatabase, ref, set, child, get } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA18yH_4l7o0rEiNJe1Ybk0wlG9A1H15fU",
+            authDomain: "doaniot-39e9c.firebaseapp.com",
+            databaseURL: "https://doaniot-39e9c-default-rtdb.firebaseio.com",
+            projectId: "doaniot-39e9c",
+            storageBucket: "doaniot-39e9c.appspot.com",
+            messagingSenderId: "977342964680",
+            appId: "1:977342964680:web:518da215ac262fa7b896fd"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        send.addEventListener('click', (e) => {
+            Sends('Number');
+        });
+        read.addEventListener('click', (e) => {
+            Getval('Number');
+        });
+
+        function Sends(S) {
+            Number = parseFloat(document.getElementById('Number').value);
+            const db = getDatabase();
+            set(ref(db, S), {
+                Value: Number
+            });
+        }
+
+        function Getval(D) {
+            const dbRef = ref(getDatabase());
+            get(child(dbRef, D + '/Value')).then((snapshot) => {
+                if (snapshot.exists()) {
+                    console.log(snapshot.val());
+                    document.getElementById('val').innerHTML = "Number/Value=" + snapshot.val();
+                } else {
+                    console.log("No data available");
+                }
+            }).catch((error) => {
+                console.error(error);
+            });
+        }
+    </script> -->
+</head>
+
+<body>
+    <!-- Bố cục đầu -->
+    <div id="L_Header">
+        <h1><br>
+            CÀI ĐẶT THÔNG SỐ
+            <br><br>
+        </h1>
+        <span id="item"></span>
+    </div>
+
+    <div id="L_C">
+        <!-- Bố cục trái -->
+        <div id="L_Left">
+            <div id="Chiso_moitruong" class="Layout">
+                <h2>CHỈ SỐ MÔI TRƯỜNG</h2>
+                <form>
+                    <label>Nồng độ pH<br>
+                        <input type="input" id="pH_min" placeholder="Nhập vào pH_Min" required> - <input type="input"
+                            id="pH_max" placeholder="Nhập vào pH_Max" required>
+                    </label><br>
+                    <label>Nhiệt độ nước<br>
+                        <input type="input" id="Temp_min" placeholder="Nhập vào Temp_Min" required> - <input
+                            type="input" id="Temp_max" placeholder="Nhập vào Temp_Max" required>
+                    </label><br>
+                    <label>Mức nước<br>
+                        <input type="input" id="LW_min" placeholder="Nhập vào LW_Min" required> - <input type="input"
+                            id="LW_max" placeholder="Nhập vào LW_Max" required>
+                    </label><br>
+                </form>
+                <br>
+            </div>
+        </div>
+
+        <!-- Bố cục phải -->
+        <div id="L_Right">
+
+            <input type="number" id="Number" placeholder="Type number">
+            <input type="button" value="Write" id="send">
+
+            <!-- Hiển thị giá trị đọc được -->
+            <br>
+            <br>
+            <input type="button" value="Read" id="read">
+            <p id="val"> </p>
+            <!-- <div id="Tool_dieukhien" >
+                <input type="button" class="BT" id="Bt_Save" onchange="" value="SAVE">
+                <input type="button" class="BT" id="Bt_Reset" onchange="" value="RESET DEFAULT">
+            </div> -->
+
+            <div id="Thongso_dieukhien" class="Layout">
+                <h2>THÔNG SỐ ĐIỀU KHIỂN</h2>
+                <form>
+                    <h3>QUẠT ĐẬP NƯỚC</h3>
+                    <label>Chế độ điều khiển</label>
+                    <select id="Mode_Ctrl" onclick="Mode_controller()">
+                        <option value="1">Chế độ 1: Tự động theo thời gian trong ngày</option>
+                        <option value="2">Chế độ 2: Tự động theo chu kỳ</option>
+                        <option value="3">Chế độ 3: Thủ công</option>
+                    </select>
+                    </ul>
+                </form>
+                <br>
+
+                <div id="DK_Chedo_1">
+                    <h3>TỰ ĐỘNG THEO THỜI GIAN TRONG NGÀY</h3> <br>
+
+                    <label>Tại thời điểm</label>
+
+                    <input type="text" id="RTime_1" placeholder="hh:mm" required=""> <label>Thời gian hoạt động</label>
+                    <input type="text" id="PTime_1" placeholder="mm" required=""> <br>
+                    <br>
+
+                    <label>Tại thời điểm</label>
+
+                    <input type="text" id="RTime_2" placeholder="hh:mm" required=""> <label>Thời gian hoạt động</label>
+                    <input type="text" id="PTime_2" placeholder="mm" required=""> <br>
+                    <br>
+                    <label>Tại thời điểm</label>
+
+                    <input type="text" id="RTime_3" placeholder="hh:mm" required=""> <label>Thời gian hoạt động</label>
+                    <input type="text" id="PTime_3" placeholder="mm" required=""> <br>
+                    <br>
+                    <label>Tại thời điểm</label>
+
+                    <input type="text" id="RTime_4" placeholder="hh:mm" required=""> <label>Thời gian hoạt động</label>
+                    <input type="text" id="PTime_4" placeholder="mm" required=""> <br>
+                    <br>
+                </div>
+
+                <div id="DK_Chedo_2">
+                    <h3>TỰ ĐỘNG THEO CHU KỲ</h3> <br>
+
+                    <label>Thời điểm chu kỳ </label>
+
+                    <input type="text" id="Tperiod" placeholder="mm" required=""> <label>Hoạt động chu kỳ </label>
+                    <input type="text" id="Tperiod_t" placeholder="mm" required=""> <br>
+                    <br>
+                </div>
+
+                <div id="DK_Chedo_3">
+                    <h3>ĐIỀU KHIỂN THỦ CÔNG</h3>
+                    <table>
+                        <tr>
+                            <th>
+                                <label>Máy bơm nước 01</label>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </th>
+                            <th>
+                                <label>Máy bơm nước 02</label>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </th>
+                            <th>
+                                <label>Máy bơm khí</label>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="Firebase.js"></script>
+</body>
+
+</html>
