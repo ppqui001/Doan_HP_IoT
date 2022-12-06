@@ -33,7 +33,6 @@
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
 
-
         let Address_FB = [];
         Address_FB[0] = "pH_min";
         Address_FB[1] = "pH_max";
@@ -42,6 +41,17 @@
         Address_FB[4] = "LW_min";
         Address_FB[5] = "LW_max";
 
+        Address_FB[6]= 'RTime_1';
+        Address_FB[7]= 'RTime_2';
+        Address_FB[8]= 'RTime_3';
+        Address_FB[9]= 'RTime_4';
+        Address_FB[10]= 'PTime_1';
+        Address_FB[11]= 'PTime_2';
+        Address_FB[12]= 'PTime_3';
+        Address_FB[13]= 'PTime_4';
+
+        Address_FB[14]= 'Tperiod';
+        Address_FB[15]= 'Tperiod_t';
 
         function Sends(S,V) {
             Number = parseFloat(V);
@@ -53,11 +63,11 @@
 
         function Getval(D) {
             const dbRef = ref(getDatabase());
-            let A;
-            get(child(dbRef, D + "/Value")).then((snapshot) => {
+            var A;
+            get(child(dbRef, 'Setting/' + D + "/Value")).then((snapshot) => {
                 if (snapshot.exists()) {
                     A = snapshot.val();
-                    console.log(snapshot.val());
+                    console.log("Nhận: " + snapshot.val());
                     document.getElementById("val").innerHTML = "Number = " + snapshot.val();
                     document.getElementById("pH_min").value = snapshot.val();
                 } else {
@@ -72,14 +82,16 @@
         send.addEventListener("click", (e) => {
             // Sends("Number", document.getElementById("Number").value);
             for (let i = 0; i < Address_FB.length; i++) {
-                console.log(typeof Address_FB[i]);
                 var val = document.getElementById(Address_FB[i]).value;
                 Sends(Address_FB[i], val);
-                console.log("Đã upload lên " + Address_FB[i])
+                console.log("Đã upload lên " + Address_FB[i] + ": " + val);
             }
         });
         read.addEventListener("click", (e) => {
-            document.getElementById("val").innerHTML = "Number = " + Getval("Number")
+            for (let i = 0; i < Address_FB.length; i++) {
+                document.getElementById(Address_FB[i]).value = Getval(Address_FB[i]);
+                console.log("Đã nhận từ " + Address_FB[i] + ": " + Getval(Address_FB[i]));
+            }
 
         });
 
@@ -161,24 +173,24 @@
 
                     <label>Tại thời điểm</label>
 
-                    <input type="text" id="RTime_1" placeholder="hh:mm" required=""> <label>Thời gian hoạt động</label>
-                    <input type="text" id="PTime_1" placeholder="mm" required=""> <br>
+                    <input type="text" id="RTime_1" placeholder="hh:mm" value="1:30" required=""> <label>Thời gian hoạt động</label>
+                    <input type="text" id="PTime_1" placeholder="mm" value="45" required=""> <br>
                     <br>
 
                     <label>Tại thời điểm</label>
 
-                    <input type="text" id="RTime_2" placeholder="hh:mm" required=""> <label>Thời gian hoạt động</label>
-                    <input type="text" id="PTime_2" placeholder="mm" required=""> <br>
+                    <input type="text" id="RTime_2" placeholder="hh:mm" value="1:30" required=""> <label>Thời gian hoạt động</label>
+                    <input type="text" id="PTime_2" placeholder="mm" value="45" required=""> <br>
                     <br>
                     <label>Tại thời điểm</label>
 
-                    <input type="text" id="RTime_3" placeholder="hh:mm" required=""> <label>Thời gian hoạt động</label>
-                    <input type="text" id="PTime_3" placeholder="mm" required=""> <br>
+                    <input type="text" id="RTime_3" placeholder="hh:mm" value="1:30" required=""> <label>Thời gian hoạt động</label>
+                    <input type="text" id="PTime_3" placeholder="mm" value="45" required=""> <br>
                     <br>
                     <label>Tại thời điểm</label>
 
-                    <input type="text" id="RTime_4" placeholder="hh:mm" required=""> <label>Thời gian hoạt động</label>
-                    <input type="text" id="PTime_4" placeholder="mm" required=""> <br>
+                    <input type="text" id="RTime_4" placeholder="hh:mm" value="1:30" required=""> <label>Thời gian hoạt động</label>
+                    <input type="text" id="PTime_4" placeholder="mm" value="45" required=""> <br>
                     <br>
                 </div>
 
@@ -187,8 +199,8 @@
 
                     <label>Thời điểm chu kỳ </label>
 
-                    <input type="text" id="Tperiod" placeholder="mm" required=""> <label>Hoạt động chu kỳ </label>
-                    <input type="text" id="Tperiod_t" placeholder="mm" required=""> <br>
+                    <input type="text" id="Tperiod" placeholder="mm" value="60" required=""> <label>Hoạt động chu kỳ </label>
+                    <input type="text" id="Tperiod_t" placeholder="mm" value="10" required=""> <br>
                     <br>
                 </div>
 
