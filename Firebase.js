@@ -18,9 +18,9 @@ var ph_Value, temp_Value, WL_Value, timeUpdate;
 // Khai bao bien  
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-
 const db = getDatabase();
 
+// Tao su kien khi nhan nut
 send.addEventListener('click', (e) => {
     Sends('Number');
 });
