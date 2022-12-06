@@ -1,18 +1,20 @@
 /* Tạo bố cục giao diện */
-#L_Header{
+#L_Header {
     text-align: center;
 }
-#L_C{
+
+#L_C {
     width: 98%;
-    
+
 
 }
-#L_Left{
+
+#L_Left {
     float: left;
     width: 30%;
 }
 
-#L_Right{
+#L_Right {
     float: right;
     width: 65%;
 }
@@ -48,12 +50,12 @@ h3 {
     color: #C4DFE6;
 }
 
-label{
+label {
     color: #C4DFE6;
 }
 
 .Layout {
-    
+
     width: 100%;
     margin-top: 30px;
     background-color: #07575B;
@@ -69,20 +71,10 @@ table {
     width: 100%;
 }
 
-table tr th{
+table tr th {
     width: 33%;
 }
 
-
-/* 
-#003B46
-#07575B
-#66A5AD
-#C4DFE6
-*/
-
-
-/* Style the header */
 header {
     background-color: white;
     padding: 1px;
@@ -105,40 +97,36 @@ header {
     height: 0;
 }
 
-.slider {
-    position: absolute;
+
+/* Định dạng nút nhấn */
+.BT {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 20px;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: -7px;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #07575B;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #66A5AD;
 }
 
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 18px;
-    width: 18px;
-    left: 4px;
-    bottom: 3px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
+.BT:hover {
+    background-color: #66A5AD
 }
 
-input:checked+.slider {
-    background-color: #003b46;
+.BT:active {
+    background-color: #66A5AD;
+    box-shadow: 0 5px #C4DFE6;
+    transform: translateY(4px);
 }
 
-input:focus+.slider {
-    box-shadow: 0 0 1px #003B46;
-}
-
-input:checked+.slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-}
+/* 
+#003B46
+#07575B
+#66A5AD
+#C4DFE6
+*/
