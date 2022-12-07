@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Trang chủ</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="trangchucuoi.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+  <script src="main.js"></script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
+    import { getDatabase, ref, set, child, get, onValue } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app"s Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyA18yH_4l7o0rEiNJe1Ybk0wlG9A1H15fU",
+      authDomain: "doaniot-39e9c.firebaseapp.com",
+      databaseURL: "https://doaniot-39e9c-default-rtdb.firebaseio.com",
+      projectId: "doaniot-39e9c",
+      storageBucket: "doaniot-39e9c.appspot.com",
+      messagingSenderId: "977342964680",
+      appId: "1:977342964680:web:518da215ac262fa7b896fd"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    // Danh sách địa chỉ firebase và id
+    let Address_FB = [];
+    Address_FB[0] = "pH_min";
+    Address_FB[1] = "pH_max";
+    Address_FB[2] = "Temp_min";
+    Address_FB[3] = "Temp_max";
+    Address_FB[4] = "LW_min";
+    Address_FB[5] = "LW_max";
+
+    Address_FB[6] = 'RTime_1';
+    Address_FB[7] = 'RTime_2';
+    Address_FB[8] = 'RTime_3';
+    Address_FB[9] = 'RTime_4';
+    Address_FB[10] = 'PTime_1';
+    Address_FB[11] = 'PTime_2';
+    Address_FB[12] = 'PTime_3';
+    Address_FB[13] = 'PTime_4';
+
+    Address_FB[14] = 'Tperiod';
+    Address_FB[15] = 'Tperiod_t';
+
+    function Sends(S, V) {
+      Number = parseFloat(V);
+      const db = getDatabase();
+      set(ref(db, 'Setting/' + S), {
+        Value: Number
+      });
+    }
+
+    // Tự động cập nhật giá trị
+    // const db = getDatabase();
+    // const starCountRef = ref(db, 'Setting/pH_min/Value');
+    // onValue(starCountRef, (snapshot) => {
+    //     const data = snapshot.val();
+    //     document.getElementById('pH_min').value = data;
+    // });
+
+    Bt_Save.addEventListener("click", (e) => {
+      // Sends("Number", document.getElementById("Number").value);
+      for (let i = 0; i < Address_FB.length; i++) {
+        var val = document.getElementById(Address_FB[i]).value;
+        Sends(Address_FB[i], val);
+        console.log("Đã upload lên " + Address_FB[i] + ": " + val);
+      }
+    });
+
+    Bt_Reload.addEventListener("click", (e) => {
+      for (let i = 0; i < Address_FB.length; i++) {
+        let D = Address_FB[i];
+        const dbRef = ref(getDatabase());
+        get(child(dbRef, 'Setting/' + D + "/Value")).then((snapshot) => {
+          if (snapshot.exists()) {
+            document.getElementById(D).value = snapshot.val();
+            console.log("Nhận: " + snapshot.val());
+            // document.getElementById("val").innerHTML = "Number = " + snapshot.val();
+            // document.getElementById("pH_min").value = snapshot.val();
+          } else {
+            console.log("No data available");
+          }
+        }).catch((error) => {
+          console.error(error);
+        });
+        // console.log("Đã nhận từ " + Address_FB[i] + ": " + M);
+      }
+
+    });
+
+    // // Doc pH
+    // const ref_pH = ref(db, "Setting" + "/pH_min");
+    // onValue(ref_pH, (snapshot) => {
+    //     ph_min = snapshot.val();
+    //     document.getElementById("").innerHTML = "pH: min" + ph_min;
+    // });
+  </script>
+
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="header">
+      <div class="box">
+        <a target="_blank" href="https://www.ctu.edu.vn/">
+          <img src="logoctu.png" alt="Logo" width="100" height="100">
+        </a>
+      </div>
+      <p>CÔNG NGHỆ IOT VÀ ỨNG DỤNG</p>
+      <div class="wide">
+        <nav class="header_nav">
+          <ul>
+            <li><b><a href="file:///D:/Code%20IOT/trangchucuoi.html"> <i class="fa fa-fw fa-home"></i> Trang chủ</a></b>
+            </li>
+            <li><b><a href="#"> <i class="fa fa-user-plus" aria-hidden="true"></i> Thành viên</a></b></li>
+            <li><b><a href="#"> <i class="fa fa-caret-down"></i> Quang trắc</a></b></li>
+            <li><b><a href="#"> <i class="fa fa-cog" aria-hidden="true"></i> Thiết lập thông số</a></b></li>
+            <li><b><a href="#"> <i class="fa fa-phone" aria-hidden="true"></i> Liên hệ</a></b></li>
+            <li><b><a href="#"> <i class="fa fa-caret-down"></i> Mở rộng </a></b>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div>
+      <!-- Bố cục đầu -->
+      <div id="L_Header">
+        <h1><br>
+          CÀI ĐẶT THÔNG SỐ
+          <br><br>
+        </h1>
+        <span id="item"></span>
+      </div>
+
+      <div id="L_C">
+        <!-- Bố cục trái -->
+        <div id="L_Left">
+          <div id="Chiso_moitruong" class="Layout">
+            <h2>CHỈ SỐ MÔI TRƯỜNG</h2>
+            <form>
+              <label>Nồng độ pH<br>
+                <input type="number" id="pH_min" placeholder="Nhập vào pH_Min" value="1" required> - <input
+                  type="number" id="pH_max" placeholder="Nhập vào pH_Max" value="7" required>
+              </label><br>
+              <label>Nhiệt độ nước<br>
+                <input type="number" id="Temp_min" placeholder="Nhập vào Temp_Min" value="30" required> - <input
+                  type="number" id="Temp_max" placeholder="Nhập vào Temp_Max" value="45" required>
+              </label><br>
+              <label>Mức nước<br>
+                <input type="number" id="LW_min" placeholder="Nhập vào LW_Min" value="150" required> - <input
+                  type="number" id="LW_max" placeholder="Nhập vào LW_Max" value="200" required>
+              </label><br>
+            </form>
+            <br>
+          </div>
+        </div>
+
+        <!-- Bố cục phải -->
+        <div id="L_Right">
+          <div id="Tool_dieukhien">
+            <input type="button" class="BT" id="Bt_Save" onchange="" value="LƯU">
+            <input type="button" class="BT" id="Bt_Reload" onchange="" value="CẬP NHẬT">
+            <input type="button" class="BT" id="Bt_Reset" onchange="" value="KHÔI PHỤC MẶC ĐỊNH">
+          </div>
+
+          <div id="Thongso_dieukhien" class="Layout">
+            <h2>THIẾT LẬP THÔNG SỐ</h2>
+            <form>
+              <h3>QUẠT ĐẬP NƯỚC</h3>
+              <label>Chế độ điều khiển</label>
+              <select id="Mode_Ctrl" onclick="Mode_controller()">
+                <option value="1">Chế độ 1: Tự động theo thời gian trong ngày</option>
+                <option value="2">Chế độ 2: Tự động theo chu kỳ</option>
+                <option value="3">Chế độ 3: Thủ công</option>
+              </select>
+              </ul>
+            </form>
+            <br>
+
+            <div id="DK_Chedo_1">
+              <h3>TỰ ĐỘNG THEO THỜI GIAN TRONG NGÀY</h3> <br>
+
+              <label>Tại thời điểm</label>
+
+              <input type="text" id="RTime_1" placeholder="hh:mm" value="2:30" required=""> <label>Thời gian hoạt
+                động</label>
+              <input type="text" id="PTime_1" placeholder="mm" value="45" required=""> <br>
+              <br>
+
+              <label>Tại thời điểm</label>
+
+              <input type="text" id="RTime_2" placeholder="hh:mm" value="1:30" required=""> <label>Thời gian hoạt
+                động</label>
+              <input type="text" id="PTime_2" placeholder="mm" value="45" required=""> <br>
+              <br>
+              <label>Tại thời điểm</label>
+
+              <input type="text" id="RTime_3" placeholder="hh:mm" value="1:30" required=""> <label>Thời gian hoạt
+                động</label>
+              <input type="text" id="PTime_3" placeholder="mm" value="45" required=""> <br>
+              <br>
+              <label>Tại thời điểm</label>
+
+              <input type="text" id="RTime_4" placeholder="hh:mm" value="1:30" required=""> <label>Thời gian hoạt
+                động</label>
+              <input type="text" id="PTime_4" placeholder="mm" value="45" required=""> <br>
+              <br>
+            </div>
+
+            <div id="DK_Chedo_2">
+              <h3>TỰ ĐỘNG THEO CHU KỲ</h3> <br>
+
+              <label>Thời điểm chu kỳ </label>
+
+              <input type="text" id="Tperiod" placeholder="mm" value="60" required=""> <label>Hoạt động chu kỳ
+              </label>
+              <input type="text" id="Tperiod_t" placeholder="mm" value="10" required=""> <br>
+              <br>
+            </div>
+
+            <div id="DK_Chedo_3">
+              <h3>ĐIỀU KHIỂN THỦ CÔNG</h3>
+              <table>
+                <tr>
+                  <th>
+                    <label>Máy bơm nước 01</label>
+                    <label class="switch">
+                      <input type="checkbox">
+                      <span class="slider round"></span>
+                    </label>
+                  </th>
+                  <th>
+                    <label>Máy bơm nước 02</label>
+                    <label class="switch">
+                      <input type="checkbox">
+                      <span class="slider round"></span>
+                    </label>
+                  </th>
+                  <th>
+                    <label>Máy bơm khí</label>
+                    <label class="switch">
+                      <input type="checkbox">
+                      <span class="slider round"></span>
+                    </label>
+                  </th>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <div class="footer-container">
+        <p>
+        <h3>Copyright by group 12 KC326 semester I 2022-2023</h3>
+        </p>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

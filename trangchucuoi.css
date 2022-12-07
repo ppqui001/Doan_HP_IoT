@@ -1,0 +1,154 @@
+a:hover {
+  text-decoration: none;
+  color: #000000;
+}
+
+.about .title {
+  text-align: center;
+  margin: 3%;
+  font-size: 20px;
+  color: black;
+  margin-bottom: -10px;
+  text-transform: uppercase;
+  font-size: 55px;
+}
+
+.about .text {
+  width: 90%;
+  font-size: 20px;
+  line-height: 1.2;
+  padding: 10px;
+  text-align: left;
+  margin: 0 auto;
+  background-COLOR: #FFFFFF;
+  border-radius: 25px;
+}
+
+.table-container:last-child {
+  margin-bottom: 60px;
+  border: 9px;
+}
+
+.content {
+  background-color: #66A5AD;
+  background-repeat: repeat;
+}
+
+
+.table-container {
+  flex: 90;
+}
+
+.circuit-container {
+  width: 50%;
+}
+
+
+#wrapper {
+  width: 100%;
+}
+
+#header p {
+  color: white;
+  font-family: Arial;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 28px;
+}
+
+.box {
+  float: left;
+  width: 140;
+  height: 100px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  padding: 20px 30px;
+  text-decoration: none;
+  margin-top: center;
+  border-radius: 30px;
+  padding-right: 100px;
+}
+
+
+li a:hover:not(.active) {
+  background: white;
+  border-radius: 50px;
+  padding-left: 100px;
+
+
+}
+
+p {
+  display: block;
+  margin-block-start: 0;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+a {
+  color: #000000;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #000000;
+}
+
+.footer-container {
+  background-color: #07575b;
+  width: 100%;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  color: white;
+  margin-top: 0px;
+}
+
+.footer-container p {
+  flex: 10;
+  text-align: center;
+}
+
+.footer-avt {
+  align-items: center;
+}
+
+#wrapper {
+  /* margin: 50px; */
+  width: 100%;
+}
+
+#header {
+  background-color: #07575B;
+  border-radius: 10px;
+  height: 100px;
+  margin-bottom: 65px;
+}
+
+
+
+ul {
+  list-style-type: none;
+  margin: 2;
+  /* padding: 20; */
+  overflow: hidden;
+  background-color: #07575B;
+  font-family: "Arial";
+  border-radius: 10px;
+}
