@@ -41,19 +41,19 @@
         Address_FB[4] = "LW_min";
         Address_FB[5] = "LW_max";
 
-        Address_FB[6]= 'RTime_1';
-        Address_FB[7]= 'RTime_2';
-        Address_FB[8]= 'RTime_3';
-        Address_FB[9]= 'RTime_4';
-        Address_FB[10]= 'PTime_1';
-        Address_FB[11]= 'PTime_2';
-        Address_FB[12]= 'PTime_3';
-        Address_FB[13]= 'PTime_4';
+        Address_FB[6] = 'RTime_1';
+        Address_FB[7] = 'RTime_2';
+        Address_FB[8] = 'RTime_3';
+        Address_FB[9] = 'RTime_4';
+        Address_FB[10] = 'PTime_1';
+        Address_FB[11] = 'PTime_2';
+        Address_FB[12] = 'PTime_3';
+        Address_FB[13] = 'PTime_4';
 
-        Address_FB[14]= 'Tperiod';
-        Address_FB[15]= 'Tperiod_t';
+        Address_FB[14] = 'Tperiod';
+        Address_FB[15] = 'Tperiod_t';
 
-        function Sends(S,V) {
+        function Sends(S, V) {
             Number = parseFloat(V);
             const db = getDatabase();
             set(ref(db, 'Setting/' + S), {
@@ -61,25 +61,15 @@
             });
         }
 
-        function Getval(D) {
-            const dbRef = ref(getDatabase());
-            var A;
-            get(child(dbRef, 'Setting/' + D + "/Value")).then((snapshot) => {
-                if (snapshot.exists()) {
-                    A = snapshot.val();
-                    console.log("Nhận: " + snapshot.val());
-                    document.getElementById("val").innerHTML = "Number = " + snapshot.val();
-                    document.getElementById("pH_min").value = snapshot.val();
-                } else {
-                    console.log("No data available");
-                }
-            }).catch((error) => {
-                console.error(error);
-            });
-            return A;
-        }
+        // Tự động cập nhật giá trị
+        // const db = getDatabase();
+        // const starCountRef = ref(db, 'Setting/pH_min/Value');
+        // onValue(starCountRef, (snapshot) => {
+        //     const data = snapshot.val();
+        //     document.getElementById('pH_min').value = data;
+        // });
 
-        send.addEventListener("click", (e) => {
+        Bt_Save.addEventListener("click", (e) => {
             // Sends("Number", document.getElementById("Number").value);
             for (let i = 0; i < Address_FB.length; i++) {
                 var val = document.getElementById(Address_FB[i]).value;
@@ -87,10 +77,23 @@
                 console.log("Đã upload lên " + Address_FB[i] + ": " + val);
             }
         });
-        read.addEventListener("click", (e) => {
+        Bt_Reload.addEventListener("click", (e) => {
             for (let i = 0; i < Address_FB.length; i++) {
-                document.getElementById(Address_FB[i]).value = Getval(Address_FB[i]);
-                console.log("Đã nhận từ " + Address_FB[i] + ": " + Getval(Address_FB[i]));
+                let D = Address_FB[i];
+                const dbRef = ref(getDatabase());
+                get(child(dbRef, 'Setting/' + D + "/Value")).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        document.getElementById(D).value = snapshot.val();
+                        console.log("Nhận: " + snapshot.val());
+                        // document.getElementById("val").innerHTML = "Number = " + snapshot.val();
+                        // document.getElementById("pH_min").value = snapshot.val();
+                    } else {
+                        console.log("No data available");
+                    }
+                }).catch((error) => {
+                    console.error(error);
+                });
+                // console.log("Đã nhận từ " + Address_FB[i] + ": " + M);
             }
 
         });
@@ -121,16 +124,16 @@
                 <h2>CHỈ SỐ MÔI TRƯỜNG</h2>
                 <form>
                     <label>Nồng độ pH<br>
-                        <input type="input" id="pH_min" placeholder="Nhập vào pH_Min" value="1" required > - <input type="input"
-                            id="pH_max" placeholder="Nhập vào pH_Max" value="7" required>
+                        <input type="number" id="pH_min" placeholder="Nhập vào pH_Min" value="1" required> - <input
+                            type="number" id="pH_max" placeholder="Nhập vào pH_Max" value="7" required>
                     </label><br>
                     <label>Nhiệt độ nước<br>
-                        <input type="input" id="Temp_min" placeholder="Nhập vào Temp_Min" value="30" required> - <input
-                            type="input" id="Temp_max" placeholder="Nhập vào Temp_Max" value="45" required>
+                        <input type="number" id="Temp_min" placeholder="Nhập vào Temp_Min" value="30" required> - <input
+                            type="number" id="Temp_max" placeholder="Nhập vào Temp_Max" value="45" required>
                     </label><br>
                     <label>Mức nước<br>
-                        <input type="input" id="LW_min" placeholder="Nhập vào LW_Min" value="150" required> - <input type="input"
-                            id="LW_max" placeholder="Nhập vào LW_Max" value="200" required>
+                        <input type="number" id="LW_min" placeholder="Nhập vào LW_Min" value="150" required> - <input
+                            type="number" id="LW_max" placeholder="Nhập vào LW_Max" value="200" required>
                     </label><br>
                 </form>
                 <br>
@@ -139,18 +142,9 @@
 
         <!-- Bố cục phải -->
         <div id="L_Right">
-
-            <input type="number" id="Number" placeholder="Type number">
-            <input type="button" value="Write" id="send">
-
-            <!-- Hiển thị giá trị đọc được -->
-            <br>
-            <br>
-            <input type="button" value="Read" id="read">
-            <p id="val"></p>
-
             <div id="Tool_dieukhien">
                 <input type="button" class="BT" id="Bt_Save" onchange="" value="LƯU">
+                <input type="button" class="BT" id="Bt_Reload" onchange="" value="CẬP NHẬT">
                 <input type="button" class="BT" id="Bt_Reset" onchange="" value="KHÔI PHỤC MẶC ĐỊNH">
             </div>
 
@@ -173,23 +167,27 @@
 
                     <label>Tại thời điểm</label>
 
-                    <input type="text" id="RTime_1" placeholder="hh:mm" value="1:30" required=""> <label>Thời gian hoạt động</label>
+                    <input type="text" id="RTime_1" placeholder="hh:mm" value="2:30" required=""> <label>Thời gian hoạt
+                        động</label>
                     <input type="text" id="PTime_1" placeholder="mm" value="45" required=""> <br>
                     <br>
 
                     <label>Tại thời điểm</label>
 
-                    <input type="text" id="RTime_2" placeholder="hh:mm" value="1:30" required=""> <label>Thời gian hoạt động</label>
+                    <input type="text" id="RTime_2" placeholder="hh:mm" value="1:30" required=""> <label>Thời gian hoạt
+                        động</label>
                     <input type="text" id="PTime_2" placeholder="mm" value="45" required=""> <br>
                     <br>
                     <label>Tại thời điểm</label>
 
-                    <input type="text" id="RTime_3" placeholder="hh:mm" value="1:30" required=""> <label>Thời gian hoạt động</label>
+                    <input type="text" id="RTime_3" placeholder="hh:mm" value="1:30" required=""> <label>Thời gian hoạt
+                        động</label>
                     <input type="text" id="PTime_3" placeholder="mm" value="45" required=""> <br>
                     <br>
                     <label>Tại thời điểm</label>
 
-                    <input type="text" id="RTime_4" placeholder="hh:mm" value="1:30" required=""> <label>Thời gian hoạt động</label>
+                    <input type="text" id="RTime_4" placeholder="hh:mm" value="1:30" required=""> <label>Thời gian hoạt
+                        động</label>
                     <input type="text" id="PTime_4" placeholder="mm" value="45" required=""> <br>
                     <br>
                 </div>
@@ -199,7 +197,8 @@
 
                     <label>Thời điểm chu kỳ </label>
 
-                    <input type="text" id="Tperiod" placeholder="mm" value="60" required=""> <label>Hoạt động chu kỳ </label>
+                    <input type="text" id="Tperiod" placeholder="mm" value="60" required=""> <label>Hoạt động chu kỳ
+                    </label>
                     <input type="text" id="Tperiod_t" placeholder="mm" value="10" required=""> <br>
                     <br>
                 </div>
