@@ -14,168 +14,172 @@
 </head>
 
 <body>
-  <div id="wrapper">
-    <div id="header">
-      <div class="box">
-        <a target="_blank" href="https://www.ctu.edu.vn/">
-          <img src="logoctu.png" alt="Logo" width="100" height="100">
-        </a>
-      </div>
-      <p>CÔNG NGHỆ IOT VÀ ỨNG DỤNG</p>
-      <div class="wide">
-        <nav class="header_nav">
-          <ul>
-            <li><b><a href="file:///D:/Code%20IOT/trangchucuoi.html"> <i class="fa fa-fw fa-home"></i> Trang chủ</a></b>
-            </li>
-            <li><b><a href="#"> <i class="fa fa-user-plus" aria-hidden="true"></i> Thành viên</a></b></li>
-            <li><b><a href="#"> <i class="fa fa-caret-down"></i> Quang trắc</a></b></li>
-            <li><b><a href="#"> <i class="fa fa-cog" aria-hidden="true"></i> Thiết lập thông số</a></b></li>
-            <li><b><a href="#"> <i class="fa fa-phone" aria-hidden="true"></i> Liên hệ</a></b></li>
-            <li><b><a href="#"> <i class="fa fa-caret-down"></i> Mở rộng </a></b>
-            </li>
-          </ul>
-        </nav>
-      </div>
+  <div id="header">
+    <div class="box">
+      <a target="_blank" href="https://www.ctu.edu.vn/">
+        <img src="logoctu.png" alt="Logo" width="100" height="100">
+      </a>
+    </div>
+    <p>CÔNG NGHỆ IOT VÀ ỨNG DỤNG</p>
+    <div class="wide">
+      <nav class="header_nav">
+        <ul>
+          <li><b><a href="file:///D:/Code%20IOT/trangchucuoi.html"> <i class="fa fa-fw fa-home"></i> Trang chủ</a></b>
+          </li>
+          <li><b><a href="#"> <i class="fa fa-user-plus" aria-hidden="true"></i> Thành viên</a></b></li>
+          <li><b><a href="#"> <i class="fa fa-caret-down"></i> Quang trắc</a></b></li>
+          <li><b><a href="#"> <i class="fa fa-cog" aria-hidden="true"></i> Thiết lập thông số</a></b></li>
+          <li><b><a href="#"> <i class="fa fa-phone" aria-hidden="true"></i> Liên hệ</a></b></li>
+          <li><b><a href="#"> <i class="fa fa-caret-down"></i> Mở rộng </a></b>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div id="bodier">
+    <!-- Bố cục đầu -->
+    <div id="L_Header">
+      <p style="background-color: aliceblue;"></p><br>
+      <h1>
+        CÀI ĐẶT THÔNG SỐ<br>
+      </h1>
+      <span id="item"></span>
     </div>
 
-    <div id="bodier">
-      <!-- Bố cục đầu -->
-      <div id="L_Header">
-        <p style="background-color: aliceblue;"></p><br>
-        <h1>
-          CÀI ĐẶT THÔNG SỐ<br>
-        </h1>
-        <span id="item"></span>
-      </div>
-
-      <div id="L_C">
-        <!-- Bố cục trái -->
-        <div id="L_Left">
-          <div id="Chiso_moitruong" class="Layout">
-            <h2>CHỈ SỐ MÔI TRƯỜNG</h2>
-            <form>
-              <label>Nồng độ pH<br>
-                <input type="number" id="pH_min" onchange="CheckValue_input()" placeholder="Nhập vào pH_Min" value="1" required> - <input
-                  type="number" id="pH_max" onchange="CheckValue_input()" placeholder="Nhập vào pH_Max" value="7" required>
-              </label><br>
-              <label>Nhiệt độ nước<br>
-                <input type="number" id="Temp_min" onchange="CheckValue_input()" placeholder="Nhập vào Temp_Min" value="30" required> - <input
-                  type="number" id="Temp_max" onchange="CheckValue_input()" placeholder="Nhập vào Temp_Max" value="45" required>
-              </label><br>
-              <label>Mức nước<br>
-                <input type="number" id="LW_min" onchange="CheckValue_input()" placeholder="Nhập vào LW_Min" value="150" required> - <input
-                  type="number" id="LW_max" onchange="CheckValue_input()" placeholder="Nhập vào LW_Max" value="200" required>
-              </label><br>
-            </form>
-            <br>
-          </div>
-        </div>
-
-        <!-- Bố cục phải -->
-        <div id="L_Right">
-          <div id="Tool_dieukhien">
-            <input type="button" class="BT" id="Bt_Save" onchange="" value="LƯU">
-            <input type="button" class="BT" id="Bt_Reload" onchange="" value="CẬP NHẬT">
-            <!-- <input type="button" class="BT" id="Bt_Reset" onchange="" value="KHÔI PHỤC MẶC ĐỊNH"> -->
-          </div>
-
-          <div id="Thongso_dieukhien" class="Layout">
-            <h2>THIẾT LẬP THÔNG SỐ</h2>
-            <form>
-              <label>Chế độ điều khiển</label>
-              <select id="Mode_Ctrl" onclick="Mode_controller()">
-                <option value="0">--Hãy lựa chọn chế độ điều khiển--</option>
-                <option value="1">Chế độ 1: Tự động theo thời gian trong ngày</option>
-                <option value="2">Chế độ 2: Tự động theo chu kỳ</option>
-                <option value="3">Chế độ 3: Thủ công</option>
-              </select>
-              </ul>
-            </form>
-            <br>
-
-            <div id="DK_Chedo_1" style="display: none;">
-              <h3>TỰ ĐỘNG THEO THỜI GIAN TRONG NGÀY</h3> <br>
-
-              <label>Tại thời điểm</label>
-
-              <input type="time" id="RTime_1" placeholder="hh:mm" value="02:30" required=""> <label>Thời gian hoạt
-                động</label>
-              <input type="number" id="PTime_1" placeholder="mm" value="45" required=""> <br>
-              <br>
-
-              <label>Tại thời điểm</label>
-
-              <input type="time" id="RTime_2" placeholder="hh:mm" value="01:30" required=""> <label>Thời gian hoạt
-                động</label>
-              <input type="number" id="PTime_2" placeholder="mm" value="45" required=""> <br>
-              <br>
-              <label>Tại thời điểm</label>
-
-              <input type="time" id="RTime_3" placeholder="hh:mm" value="01:30" required=""> <label>Thời gian hoạt
-                động</label>
-              <input type="number" id="PTime_3" placeholder="mm" value="45" required=""> <br>
-              <br>
-              <label>Tại thời điểm</label>
-
-              <input type="time" id="RTime_4" placeholder="hh:mm" value="01:30" required=""> <label>Thời gian hoạt
-                động</label>
-              <input type="number" id="PTime_4" placeholder="mm" value="45" required=""> <br>
-              <br>
-            </div>
-
-            <div id="DK_Chedo_2" style="display: none;">
-              <h3>TỰ ĐỘNG THEO CHU KỲ</h3> <br>
-
-              <label>Thời điểm chu kỳ </label>
-
-              <input type="number" id="Tperiod" onchange="CheckValue_input()" placeholder="mm" value="60" required=""> <label>Hoạt động chu kỳ
-              </label>
-              <input type="number" id="Tperiod_t" onchange="CheckValue_input()" placeholder="mm" value="10" required=""> <br>
-              <br>
-            </div>
-
-            <div id="DK_Chedo_3" style="display: none;">
-              <h3>ĐIỀU KHIỂN THỦ CÔNG</h3>
-              <table>
-                <tr>
-                  <th>
-                    <label>Máy bơm nước 01</label>
-                    <label class="switch">
-                      <input type="checkbox" id="SW_1" value="OFF">
-                      <span class="slider round"></span>
-                    </label>
-                  </th>
-                  <th>
-                    <label>Máy bơm nước 02</label>
-                    <label class="switch">
-                      <input type="checkbox" id="SW_2" value="OFF">
-                      <span class="slider round"></span>
-                    </label>
-                  </th>
-                  <th>
-                    <label>Máy bơm khí</label>
-                    <label class="switch">
-                      <input type="checkbox" id="SW_3" value="OFF">
-                      <span class="slider round"></span>
-                    </label>
-                  </th>
-                </tr>
-              </table>
-            </div>
-          </div>
+    <div id="L_C">
+      <!-- Bố cục trái -->
+      <div id="L_Left">
+        <div id="Chiso_moitruong" class="Layout">
+          <h2>CHỈ SỐ MÔI TRƯỜNG</h2>
+          <form>
+            <label>Nồng độ pH<br>
+              <input type="number" id="pH_min" onchange="CheckValue_input()" placeholder="Nhập vào pH_Min" value="1"
+                required> - <input type="number" id="pH_max" onchange="CheckValue_input()" placeholder="Nhập vào pH_Max"
+                value="7" required>
+            </label><br>
+            <label>Nhiệt độ nước<br>
+              <input type="number" id="Temp_min" onchange="CheckValue_input()" placeholder="Nhập vào Temp_Min"
+                value="30" required> - <input type="number" id="Temp_max" onchange="CheckValue_input()"
+                placeholder="Nhập vào Temp_Max" value="45" required>
+            </label><br>
+            <label>Mức nước<br>
+              <input type="number" id="LW_min" onchange="CheckValue_input()" placeholder="Nhập vào LW_Min" value="150"
+                required> - <input type="number" id="LW_max" onchange="CheckValue_input()" placeholder="Nhập vào LW_Max"
+                value="200" required>
+            </label><br>
+          </form>
+          <br>
         </div>
       </div>
-    </div>
 
-    <div id="footer">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <div class="footer-container">
-        <p>
-        <h3>Copyright by group 12 KC326 semester I 2022-2023</h3>
-        </p>
+      <!-- Bố cục phải -->
+      <div id="L_Right">
+        <div id="Tool_dieukhien">
+          <input type="button" class="BT" id="Bt_Save" onchange="" value="LƯU">
+          <input type="button" class="BT" id="Bt_Reload" onchange="" value="CẬP NHẬT">
+          <!-- <input type="button" class="BT" id="Bt_Reset" onchange="" value="KHÔI PHỤC MẶC ĐỊNH"> -->
+        </div>
+
+        <div id="Thongso_dieukhien" class="Layout">
+          <h2>THIẾT LẬP THÔNG SỐ</h2>
+          <form>
+            <label>Chế độ điều khiển</label>
+            <select id="Mode_Ctrl" onclick="Mode_controller()">
+              <option value="0">--Hãy lựa chọn chế độ điều khiển--</option>
+              <option value="1">Chế độ 1: Tự động theo thời gian trong ngày</option>
+              <option value="2">Chế độ 2: Tự động theo chu kỳ</option>
+              <option value="3">Chế độ 3: Thủ công</option>
+            </select>
+            </ul>
+          </form>
+          <br>
+
+          <div id="DK_Chedo_1" style="display: none;">
+            <h3>TỰ ĐỘNG THEO THỜI GIAN TRONG NGÀY</h3> <br>
+
+            <label>Tại thời điểm</label>
+
+            <input type="time" id="RTime_1" placeholder="hh:mm" value="02:30" required=""> <label>Thời gian hoạt
+              động</label>
+            <input type="number" id="PTime_1" placeholder="mm" value="45" required=""> <br>
+            <br>
+
+            <label>Tại thời điểm</label>
+
+            <input type="time" id="RTime_2" placeholder="hh:mm" value="01:30" required=""> <label>Thời gian hoạt
+              động</label>
+            <input type="number" id="PTime_2" placeholder="mm" value="45" required=""> <br>
+            <br>
+            <label>Tại thời điểm</label>
+
+            <input type="time" id="RTime_3" placeholder="hh:mm" value="01:30" required=""> <label>Thời gian hoạt
+              động</label>
+            <input type="number" id="PTime_3" placeholder="mm" value="45" required=""> <br>
+            <br>
+            <label>Tại thời điểm</label>
+
+            <input type="time" id="RTime_4" placeholder="hh:mm" value="01:30" required=""> <label>Thời gian hoạt
+              động</label>
+            <input type="number" id="PTime_4" placeholder="mm" value="45" required=""> <br>
+            <br>
+          </div>
+
+          <div id="DK_Chedo_2" style="display: none;">
+            <h3>TỰ ĐỘNG THEO CHU KỲ</h3> <br>
+
+            <label>Thời điểm chu kỳ </label>
+
+            <input type="number" id="Tperiod" onchange="CheckValue_input()" placeholder="mm" value="60" required="">
+            <label>Hoạt động chu kỳ
+            </label>
+            <input type="number" id="Tperiod_t" onchange="CheckValue_input()" placeholder="mm" value="10" required="">
+            <br>
+            <br>
+          </div>
+
+          <div id="DK_Chedo_3" style="display: none;">
+            <h3>ĐIỀU KHIỂN THỦ CÔNG</h3>
+            <table>
+              <tr>
+                <th>
+                  <label>Máy bơm nước 01</label>
+                  <label class="switch">
+                    <input type="checkbox" id="SW_1" value="OFF">
+                    <span class="slider round"></span>
+                  </label>
+                </th>
+                <th>
+                  <label>Máy bơm nước 02</label>
+                  <label class="switch">
+                    <input type="checkbox" id="SW_2" value="OFF">
+                    <span class="slider round"></span>
+                  </label>
+                </th>
+                <th>
+                  <label>Máy bơm khí</label>
+                  <label class="switch">
+                    <input type="checkbox" id="SW_3" value="OFF">
+                    <span class="slider round"></span>
+                  </label>
+                </th>
+              </tr>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+  <div id="footer">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <div class="footer-container">
+      <p>
+      <h3>Copyright by group 12 KC326 semester I 2022-2023</h3>
+      </p>
+    </div>
+  </div>
+
 </body>
 
 </html>

@@ -29,7 +29,7 @@
 /* Style the body */
 body {
     background-color: #C4DFE6;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: sans-serif;
 }
 
 h1 {
@@ -89,6 +89,15 @@ header {
     font-size: 30px;
     color: black;
     height: 20%;
+}
+
+#header p {
+  color: white;
+  font-family: Arial;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 28px;
 }
 
 /* Định dạng nút nhấn */
