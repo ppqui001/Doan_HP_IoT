@@ -5,8 +5,7 @@
 
 #L_C {
     width: 98%;
-
-
+    margin-left: 20px;
 }
 
 #L_Left {
@@ -17,6 +16,13 @@
 #L_Right {
     float: right;
     width: 65%;
+    margin-right: 20px;
+}
+
+#bodier{
+  height: 620px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 
@@ -28,7 +34,7 @@ body {
 
 h1 {
     background-color: #07575B;
-    color: #C4DFE6;
+    color: white;
     font-weight: bold;
     font-size: 40px;
 }
@@ -41,17 +47,17 @@ h2 {
     margin-block-end: 0.5em;
     font-weight: bold;
     font-size: 30px;
-    color: #C4DFE6;
+    color: white;
 }
 
 h3 {
     text-align: center;
     display: block;
-    color: #C4DFE6;
+    color: white;
 }
 
 label {
-    color: #C4DFE6;
+    color: white;
 }
 
 .Layout {
@@ -61,6 +67,7 @@ label {
     background-color: #07575B;
     padding: 10px 10px 0 10px;
     border-radius: 10px;
+    border: 7px solid #66A5AD;
 }
 
 input {
@@ -83,20 +90,6 @@ header {
     color: black;
     height: 20%;
 }
-
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 45px;
-    height: 24px;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
 
 /* Định dạng nút nhấn */
 .BT {
@@ -124,6 +117,80 @@ header {
     transform: translateY(4px);
 }
 
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #C4DFE6;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #66A5AD;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #66A5AD;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+
+  .Layout input {
+    background-color: white;
+    font-family: sans-serif;
+  }
+
+  form option {
+    background-color: white;
+    font-family: sans-serif;
+  }
 /* 
 #003B46
 #07575B
