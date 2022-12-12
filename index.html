@@ -39,24 +39,25 @@
     Address_FB[3] = "Temp_max";
     Address_FB[4] = "LW_min";
     Address_FB[5] = "LW_max";
+    Address_FB[6] = 'PTime_1';
+    Address_FB[7] = 'PTime_2';
+    Address_FB[8] = 'PTime_3';
+    Address_FB[9] = 'PTime_4';
+    Address_FB[10] = 'Tperiod';
+    Address_FB[11] = 'Tperiod_t';
+    Address_FB[12] = 'Mode_Ctrl';
 
-    Address_FB[6] = 'RTime_1';
-    Address_FB[7] = 'RTime_2';
-    Address_FB[8] = 'RTime_3';
-    Address_FB[9] = 'RTime_4';
-    Address_FB[10] = 'PTime_1';
-    Address_FB[11] = 'PTime_2';
-    Address_FB[12] = 'PTime_3';
-    Address_FB[13] = 'PTime_4';
+    Address_FB[13] = 'RTime_1';
+    Address_FB[14] = 'RTime_2';
+    Address_FB[15] = 'RTime_3';
+    Address_FB[16] = 'RTime_4';
 
-    Address_FB[14] = 'Tperiod';
-    Address_FB[15] = 'Tperiod_t';
-
-    function Sends(S, V) {
-      Number = parseFloat(V);
+    function Sends(S, V, mode) {
+      // if (mode == 1) { Number = toString(V); }
+      // else { Number = parseFloat(V); }
       const db = getDatabase();
       set(ref(db, 'Setting/' + S), {
-        Value: Number
+        Value: V
       });
     }
 
@@ -72,7 +73,10 @@
       // Sends("Number", document.getElementById("Number").value);
       for (let i = 0; i < Address_FB.length; i++) {
         var val = document.getElementById(Address_FB[i]).value;
-        Sends(Address_FB[i], val);
+        if (i > 12) Sends(Address_FB[i], val, 1);
+        else Sends(Address_FB[i], val, 0);
+        var G = typeof val;
+        console.log(G);
         console.log("Đã upload lên " + Address_FB[i] + ": " + val);
       }
     });
@@ -180,6 +184,7 @@
               <h3>QUẠT ĐẬP NƯỚC</h3>
               <label>Chế độ điều khiển</label>
               <select id="Mode_Ctrl" onclick="Mode_controller()">
+                <option value="0">--Hãy lựa chọn chế độ điều khiển--</option>
                 <option value="1">Chế độ 1: Tự động theo thời gian trong ngày</option>
                 <option value="2">Chế độ 2: Tự động theo chu kỳ</option>
                 <option value="3">Chế độ 3: Thủ công</option>
@@ -188,48 +193,48 @@
             </form>
             <br>
 
-            <div id="DK_Chedo_1">
+            <div id="DK_Chedo_1" style="display: none;">
               <h3>TỰ ĐỘNG THEO THỜI GIAN TRONG NGÀY</h3> <br>
 
               <label>Tại thời điểm</label>
 
-              <input type="text" id="RTime_1" placeholder="hh:mm" value="2:30" required=""> <label>Thời gian hoạt
+              <input type="time" id="RTime_1" placeholder="hh:mm" value="02:30" required=""> <label>Thời gian hoạt
                 động</label>
-              <input type="text" id="PTime_1" placeholder="mm" value="45" required=""> <br>
+              <input type="number" id="PTime_1" placeholder="mm" value="45" required=""> <br>
               <br>
 
               <label>Tại thời điểm</label>
 
-              <input type="text" id="RTime_2" placeholder="hh:mm" value="1:30" required=""> <label>Thời gian hoạt
+              <input type="time" id="RTime_2" placeholder="hh:mm" value="01:30" required=""> <label>Thời gian hoạt
                 động</label>
-              <input type="text" id="PTime_2" placeholder="mm" value="45" required=""> <br>
+              <input type="number" id="PTime_2" placeholder="mm" value="45" required=""> <br>
               <br>
               <label>Tại thời điểm</label>
 
-              <input type="text" id="RTime_3" placeholder="hh:mm" value="1:30" required=""> <label>Thời gian hoạt
+              <input type="time" id="RTime_3" placeholder="hh:mm" value="01:30" required=""> <label>Thời gian hoạt
                 động</label>
-              <input type="text" id="PTime_3" placeholder="mm" value="45" required=""> <br>
+              <input type="number" id="PTime_3" placeholder="mm" value="45" required=""> <br>
               <br>
               <label>Tại thời điểm</label>
 
-              <input type="text" id="RTime_4" placeholder="hh:mm" value="1:30" required=""> <label>Thời gian hoạt
+              <input type="time" id="RTime_4" placeholder="hh:mm" value="01:30" required=""> <label>Thời gian hoạt
                 động</label>
-              <input type="text" id="PTime_4" placeholder="mm" value="45" required=""> <br>
+              <input type="number" id="PTime_4" placeholder="mm" value="45" required=""> <br>
               <br>
             </div>
 
-            <div id="DK_Chedo_2">
+            <div id="DK_Chedo_2" style="display: none;">
               <h3>TỰ ĐỘNG THEO CHU KỲ</h3> <br>
 
               <label>Thời điểm chu kỳ </label>
 
-              <input type="text" id="Tperiod" placeholder="mm" value="60" required=""> <label>Hoạt động chu kỳ
+              <input type="number" id="Tperiod" placeholder="mm" value="60" required=""> <label>Hoạt động chu kỳ
               </label>
-              <input type="text" id="Tperiod_t" placeholder="mm" value="10" required=""> <br>
+              <input type="number" id="Tperiod_t" placeholder="mm" value="10" required=""> <br>
               <br>
             </div>
 
-            <div id="DK_Chedo_3">
+            <div id="DK_Chedo_3" style="display: none;">
               <h3>ĐIỀU KHIỂN THỦ CÔNG</h3>
               <table>
                 <tr>

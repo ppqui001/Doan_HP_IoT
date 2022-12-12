@@ -50,7 +50,11 @@ function Mode_controller() {
         document.getElementById("DK_Chedo_2").style.display = 'none';
         document.getElementById("DK_Chedo_3").style.display = 'block';
         console.log("M3");
+    } else if (Mode_Ctrl == "0") {
+        document.getElementById("DK_Chedo_1").style.display = 'none';
+        document.getElementById("DK_Chedo_2").style.display = 'none';
+        document.getElementById("DK_Chedo_3").style.display = 'none';
     } else {
-        console.log(MOther);
+        console.log("M_Other");
     }
 }
