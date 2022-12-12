@@ -6,15 +6,25 @@ import { getDatabase, ref, set, child, get, onValue } from "https://www.gstatic.
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app"s Firebase configuration
+// const firebaseConfig = {
+//     apiKey: "AIzaSyA18yH_4l7o0rEiNJe1Ybk0wlG9A1H15fU",
+//     authDomain: "doaniot-39e9c.firebaseapp.com",
+//     databaseURL: "https://doaniot-39e9c-default-rtdb.firebaseio.com",
+//     projectId: "doaniot-39e9c",
+//     storageBucket: "doaniot-39e9c.appspot.com",
+//     messagingSenderId: "977342964680",
+//     appId: "1:977342964680:web:518da215ac262fa7b896fd"
+// };
+
 const firebaseConfig = {
-    apiKey: "AIzaSyA18yH_4l7o0rEiNJe1Ybk0wlG9A1H15fU",
-    authDomain: "doaniot-39e9c.firebaseapp.com",
-    databaseURL: "https://doaniot-39e9c-default-rtdb.firebaseio.com",
-    projectId: "doaniot-39e9c",
-    storageBucket: "doaniot-39e9c.appspot.com",
-    messagingSenderId: "977342964680",
-    appId: "1:977342964680:web:518da215ac262fa7b896fd"
-};
+    apiKey: "AIzaSyDs-Z1Mcnf05Fndm9qvLhTxIeFpmx3lQQA",
+    authDomain: "html-290ff.firebaseapp.com",
+    databaseURL: "https://html-290ff-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "html-290ff",
+    storageBucket: "html-290ff.appspot.com",
+    messagingSenderId: "17779780515",
+    appId: "1:17779780515:web:daa45ec0151e175ae28816"
+  };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
